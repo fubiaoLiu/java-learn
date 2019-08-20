@@ -1,6 +1,11 @@
 package com.xiaoliu.learn.jps;
 
-public class JspDemo {
+/**
+ * @description: 模拟用户运行程序，jps命令查看运行中的Java进程
+ * @author: FuBiaoLiu
+ * @date: 2019/8/20
+ */
+public class JpsDemo {
     public static void main(String[] args) {
         try {
             while (true) {
