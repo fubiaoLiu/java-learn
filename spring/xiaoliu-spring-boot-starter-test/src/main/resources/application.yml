@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: xiaoliu-spring-boot-starter-test
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+ # 日志
+logging:
+  config: classpath:log4j2.yml
+  level:
+     org.springframework: info
+xiaoliu:
+  addr:
+    enabled: true
+    ip: 8.8.8.8
+    port: 8888
