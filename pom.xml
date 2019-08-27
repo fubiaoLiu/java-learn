@@ -17,6 +17,7 @@
     <modules>
         <module>core</module>
         <module>jvm</module>
+        <module>spring</module>
     </modules>
 
     <build>

@@ -13,7 +13,9 @@ xiaoliu:
     ip: 8.8.8.8
     port: 8888
 ```
-
+```
+实际使用时使用mvn clean install命令推送到本地仓库
+```
 ## xiaoliu-spring-boot-starter-test(测试自定义Starter的使用)
 
 用于测试`xiaoliu-spring-boot-starter`中定义的两个Service，项目定义了两个接口分别用于测试调用`TimeService#showTime()`和`AddrService#showAddr()`方法。
