@@ -1,0 +1,19 @@
+spring:
+  # 应用名
+  application:
+    name: tools
+  # 环境切换
+  profiles:
+    active: dev
+
+# 日志配置
+logging:
+  config: classpath:log4j2.yml
+
+---
+# 开发环境
+server:
+  port: 7002
+  max-http-header-size: 40960
+spring:
+  profiles: dev
