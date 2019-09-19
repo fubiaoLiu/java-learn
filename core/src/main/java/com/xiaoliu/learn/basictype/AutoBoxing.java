@@ -1,4 +1,4 @@
-package com.xiaoliu.learn.boxing;
+package com.xiaoliu.learn.basictype;
 
 public class AutoBoxing {
     public static void main(String[] args) {
