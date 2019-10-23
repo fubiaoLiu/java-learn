@@ -8,7 +8,7 @@ import java.util.Map;
  * @author: FuBiaoLiu
  * @date: 2019/9/20
  */
-public class LRUCache<K, V> extends LinkedHashMap<K, V> {
+public class LRUCache1<K, V> extends LinkedHashMap<K, V> {
     static class LRUMap<K, V> extends LinkedHashMap<K, V> {
         private final int maxSize;
 
