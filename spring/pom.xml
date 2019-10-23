@@ -23,6 +23,7 @@
     </properties>
 
     <modules>
+        <module>spring-core</module>
         <module>xiaoliu-spring-boot-starter</module>
         <module>xiaoliu-spring-boot-starter-test</module>
     </modules>
