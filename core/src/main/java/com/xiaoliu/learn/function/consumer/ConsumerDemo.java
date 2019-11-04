@@ -3,7 +3,8 @@ package com.xiaoliu.learn.function.consumer;
 import java.util.function.Consumer;
 
 /**
- * @description: Consumer<T> 提供一个T类型的输入参数，不返回执行结果
+ * @description: Consumer<T> 代表消费，提供一个T类型的输入参数，不返回执行结果。
+ * 它包含有一个有输入而无输出的accept接口方法；除accept方法，它还包含有andThen这个方法。
  * @author: FuBiaoLiu
  * @date: 2019/9/19
  */
