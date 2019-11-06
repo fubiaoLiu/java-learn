@@ -1,6 +1,7 @@
 package com.xiaoliu.learn;
 
 import com.xiaoliu.learn.config.SpringConfig;
+import com.xiaoliu.learn.dao.TestDao;
 import com.xiaoliu.learn.service.CyclicService1;
 import com.xiaoliu.learn.service.TestService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,7 +18,8 @@ public class Test {
         annotationConfigApplicationContext.setAllowCircularReferences(false);
         System.out.println("------ System init Success! ------");
         // test1(annotationConfigApplicationContext);
-        test2(annotationConfigApplicationContext);
+        // test2(annotationConfigApplicationContext);
+        test3(annotationConfigApplicationContext);
     }
 
     private static void test1(AnnotationConfigApplicationContext applicationContext) {
@@ -31,10 +33,21 @@ public class Test {
 
     /**
      * 测试循环依赖的情况
+     *
      * @param applicationContext
      */
     private static void test2(AnnotationConfigApplicationContext applicationContext) {
         CyclicService1 service = applicationContext.getBean(CyclicService1.class);
         service.test();
+    }
+
+    /**
+     * 测试JDK动态代理和CGLIB动态代理切换(@EnableAspectJAutoProxy.proxyTargetClass)
+     *
+     * @param applicationContext
+     */
+    private static void test3(AnnotationConfigApplicationContext applicationContext) {
+        TestDao dao = (TestDao) applicationContext.getBean("myTestDaoImpl");
+        dao.test();
     }
 }

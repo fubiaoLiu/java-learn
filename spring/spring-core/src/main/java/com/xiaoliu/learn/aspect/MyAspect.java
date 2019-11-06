@@ -46,6 +46,27 @@ public class MyAspect {
     }
 
     /**
+     * 参数为String的方法
+     */
+    @Pointcut("args(java.lang.String)")
+    private void pointCutArgs() {
+    }
+
+    /**
+     * 目标对象为TestDao
+     */
+    @Pointcut("this(com.xiaoliu.learn.dao.TestDao)")
+    private void pointCutTarget() {
+    }
+
+    /**
+     * 代理对象为TestDao
+     */
+    @Pointcut("this(com.xiaoliu.learn.dao.TestDao)")
+    private void pointCutThis() {
+    }
+
+    /**
      * 前置通知: 切点定义引用pointCutExecution()方法的表达式
      */
     @Before("pointCutExecution()")
@@ -84,5 +105,10 @@ public class MyAspect {
             throwable.printStackTrace();
         }
         System.out.println("------ Aspect around tail... ------");
+    }
+
+    @Before("pointCutTarget()")
+    private void daoBefore(){
+        System.out.println("------ Aspect daoBefore... ------");
     }
 }

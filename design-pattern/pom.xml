@@ -20,11 +20,14 @@
 
     <dependencies>
         <!--lombok-->
-        <dependency>
+        <!--使用JavaCompiler编译时报 警告: Can't initialize javac processor due to (most likely) a class loader problem: java.lang.NoClassDefFoundError: com/sun/tools/javac/processing/JavacProcessingEnvironment
+            所以注释掉
+        -->
+        <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-        </dependency>
+        </dependency>-->
         <!--Ali fastjson-->
         <dependency>
             <groupId>com.alibaba</groupId>
