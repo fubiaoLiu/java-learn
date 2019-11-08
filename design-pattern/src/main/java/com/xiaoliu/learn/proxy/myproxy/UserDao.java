@@ -8,6 +8,8 @@ package com.xiaoliu.learn.proxy.myproxy;
 public interface UserDao {
     void query();
 
+    String queryName();
+
     String queryNameById(int id);
 
     String queryByName(String name);
