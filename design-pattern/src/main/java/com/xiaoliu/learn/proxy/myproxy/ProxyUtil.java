@@ -20,8 +20,10 @@ import java.net.URLClassLoader;
 public class ProxyUtil {
     private static final String ROOT_PATH = "E:\\\\";
     private static byte[] lock = new byte[0];
-    // 位数，默认是8位
-    private static final long w = 100000000;
+    /**
+     * 位数，默认是8位
+     */
+    private static final long W = 100000000L;
 
     /**
      * 编译文件
@@ -134,7 +136,7 @@ public class ProxyUtil {
     public static String generateID() {
         long r;
         synchronized (lock) {
-            r = (long) ((Math.random() + 1) * w);
+            r = (long) ((Math.random() + 1) * W);
         }
         return String.valueOf(System.currentTimeMillis()).substring(10) + String.valueOf(r).substring(1);
     }
