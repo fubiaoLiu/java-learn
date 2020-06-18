@@ -7,18 +7,28 @@ package com.xiaoliu.learn.operators;
  */
 public class EqualSign {
     public static void main(String[] args) {
-        assignment();
+        assignment1();
+        assignment2();
     }
 
     /**
      * 赋值
      */
-    private static void assignment() {
+    private static void assignment1() {
         String a = "a";
         String b = "b";
         String c = "c";
         a = b = c;
-        // a=c;b=c;c=c
-        System.out.println("a=" + a + ";b=" + b + ";c=" + c);
+        // a = c, b = c, c = c
+        System.out.println("a = " + a + ", b = " + b + ", c = " + c);
+    }
+
+    /**
+     * 赋值(栈顶运算)
+     */
+    private static void assignment2() {
+        int a = 1;
+        int b = a + (++a) + (++a);
+        System.out.println("a = " + a + " , b = " + b);
     }
 }
