@@ -45,6 +45,9 @@ public class InSequence1 {
         executor.submit(thread1);
         executor.submit(thread2);
         executor.submit(thread3);
+//        executor.execute(thread1);
+//        executor.execute(thread2);
+//        executor.execute(thread3);
         executor.shutdown();
     }
 
