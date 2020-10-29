@@ -3,6 +3,11 @@ package com.xiaoliu.learn.juc;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * @description: 可重入锁
+ * @author: liufb
+ * @create: 2020/9/21 9:05
+ **/
 public class ReentrantLockDemo {
     public static void main(String[] args) {
         ReentrantLock lock = new ReentrantLock();
@@ -11,17 +16,18 @@ public class ReentrantLockDemo {
         new Thread() {
             @Override
             public void run() {
-                lock.lock();
                 System.out.println("线程1加锁...");
+                lock.lock();
                 try {
                     System.out.println("线程1阻塞等待...");
                     condition.await();
                     System.out.println("线程1被唤醒...");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                    System.out.println("线程1释放锁...");
                 }
-                System.out.println("线程1释放锁...");
-                lock.unlock();
             }
         }.start();
 
@@ -34,12 +40,17 @@ public class ReentrantLockDemo {
         new Thread() {
             @Override
             public void run() {
-                lock.lock();
                 System.out.println("线程2加锁...");
-                System.out.println("线程2唤醒线程1...");
-                condition.signal();
-                System.out.println("线程2释放锁...");
-                lock.unlock();
+                lock.lock();
+                try {
+                    System.out.println("线程2唤醒线程1...");
+                    condition.signal();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    lock.unlock();
+                    System.out.println("线程2释放锁...");
+                }
             }
         }.start();
     }

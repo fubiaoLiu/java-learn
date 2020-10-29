@@ -1,35 +1,76 @@
 package com.xiaoliu.learn.collections;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
- * @description: java8中多线程put可能出现数据丢失的情况
+ * @description: HashMap测试
  * @author: FuBiaoLiu
  * @date: 2019/9/12
  */
 public class HashMapDemo {
-    private static final int SIZE = 100000;
-    private static HashMap<Integer, Integer> map = new HashMap<>(2);
 
-    public static void main(String[] args) throws InterruptedException {
-        for (int i = 1; i <= SIZE; i++) {
-            int result = i;
-            new Thread(() -> {
-                map.put(result, result);
-            }, "lfb" + result).start();
-        }
+    public static void main(String[] args) {
+        testCapacity1();
+        testTableSizeFor();
+    }
 
-        // 让主线程睡眠5秒，保证上面的线程执行完毕
-        Thread.sleep(5000);
+    /**
+     * 测试tableSizeFor()方法
+     */
+    public static void testCapacity1() {
+        Map<String, String> map = new HashMap<>(1);
+        map.put("1", "1");
+    }
 
-        System.out.println("map.size:" + map.size());
-        for (int i = 1; i <= SIZE; i++) {
-            // 检测数据是否发生丢失
-            Integer value = map.get(i);
-            if (value == null) {
-                System.out.println(i + "丢失");
-            }
-        }
-        System.out.println("...End...");
+    /**
+     * 测试tableSizeFor()方法
+     */
+    public static void testTableSizeFor() {
+        System.out.println(tableSizeFor(-1));
+        System.out.println(tableSizeFor(0));
+        System.out.println(tableSizeFor(1));
+        System.out.println(tableSizeFor(2));
+        System.out.println(tableSizeFor(4));
+        System.out.println(tableSizeFor(8));
+        System.out.println(tableSizeFor(10));
+        System.out.println(tableSizeFor(16));
+        System.out.println(tableSizeFor(32));
+        System.out.println(tableSizeFor(33));
+    }
+
+    /**
+     * {@link HashMap} 中的tableSizeFor(int)
+     *
+     * @param cap 所需容量
+     * @return 优化后的容量
+     */
+    private static int tableSizeFor(int cap) {
+        // cap = 10
+        int n = cap - 1;
+        System.out.println("1:" + n);
+        // n = 9    1001
+        n |= n >>> 1;
+        System.out.println("2:" + n);
+        // n >>> 1 = 0100
+        // n |= n >>> 1 = 1101
+        n |= n >>> 2;
+        System.out.println("3:" + n);
+        // n >>> 2 = 0011
+        // n |= n >>> 2 = 1111
+        n |= n >>> 4;
+        System.out.println("4:" + n);
+        // n >>> 4 = 0000
+        // n |= n >>> 4 = 1111
+        n |= n >>> 8;
+        System.out.println("5:" + n);
+        // n >>> 8 = 0000
+        // n |= n >>> 8 = 1111
+        n |= n >>> 16;
+        System.out.println("6:" + n);
+        // n >>> 16 = 0000
+        // n |= n >>> 16 = 1111
+        return (n < 0) ? 1 : n + 1;
+        // n + 1 = 00001 0000 = 16
     }
 }
