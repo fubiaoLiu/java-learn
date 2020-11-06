@@ -15,5 +15,13 @@ public class ReentrantReadWriteLockDemo {
 
         lock.writeLock().lock();
         lock.writeLock().unlock();
+
+        // EXCLUSIVE_MASK:      (1 << 16) - 1
+        // 1:                   0000 0000 0000 0000 0000 0000 0000 0001
+        // 1 << 16:             0000 0000 0000 0001 0000 0000 0000 0000
+        // (1 << 16) - 1:       0000 0000 0000 0000 1111 1111 1111 1111
+        // c & EXCLUSIVE_MASK:  取低16位
+        // c >>> SHARED_SHIFT:  取高16位
+        System.out.println( 5 & ((1 << 16) - 1));
     }
 }
