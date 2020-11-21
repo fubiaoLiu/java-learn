@@ -24,8 +24,10 @@
 
     <modules>
         <module>spring-core</module>
+        <module>spring-boot</module>
         <module>xiaoliu-spring-boot-starter</module>
         <module>xiaoliu-spring-boot-starter-test</module>
+        <module>spring-mvc-1</module>
     </modules>
 
     <build>
