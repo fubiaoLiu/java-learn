@@ -1,4 +1,4 @@
-package com.xiaoliu.learn.collections;
+package com.xiaoliu.learn.juc;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
